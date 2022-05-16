@@ -1,0 +1,187 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: transparent;
+}
+
+html {
+    font-size: 1vh;
+    color: white;
+    /* cursor: none; */
+}
+
+body {
+    background-color: black;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1000000;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media (orientation:portrait) {
+    html {
+        font-size: 1.25vw;
+    }
+}
+@media (orientation:landscape) {
+    html {
+        font-size: 1.25vh;
+    }
+}
+
+.slider {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+}
+
+.sections {
+    width: 200vw;
+    height: 100vh;
+}
+
+.section {
+    width: 100vw;
+    height: 100vh;
+}
+
+.webgl
+{
+    position: fixed;
+    outline: none;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.Teko {
+    font-family: 'Teko', sans-serif;
+}
+
+.landingPage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.halfDiv {
+    height: 50vh;
+    width: 100vw;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.largeText {
+    font-size: 25rem;
+    padding-top: 10vh;
+    padding-left: 1vw;
+    color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+}
+
+.largeH1 {
+    line-height: 100%;
+}
+
+.RobotoSlab {
+    font-family: 'Playfair Display SC', serif;
+}
+
+.floatingDiv {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5vw;
+    padding-top: 0vh;
+}
+
+.nacho {
+    font-size: 22rem;
+    color: #e2e186e3;
+    z-index: 2000;
+    cursor: default;
+}
+
+/* Section2 */
+
+.topZ {
+    position: relative;
+    z-index: 2000;
+    text-shadow: -2px 2px 5px black;
+}
+
+.bottomZ {
+    position: absolute;
+    z-index: 500;
+    width: 100vw;
+    height: 50%;
+    overflow: hidden;
+}
+
+.quote {
+    color: white;
+    font-family: 'Palanquin', sans-serif;
+}
+
+.XLText {
+    font-size: 50rem;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    line-height: 50vh;
+}
+
+.text-alignLeft {
+    text-align: left;
+    margin-left: 2.5vw;
+}
+
+.text-alignRight {
+    text-align: right;
+    margin-right: 2.5vw;
+}
+
+/* Text */
+.topSection, .bottomSection {
+    width: 100vw;
+    height: 50vh;
+}
+
+.textDiv1 {
+    font-size: 9rem;
+    width: 60%;
+    text-align: left;
+    padding: 7vh;
+    color: #e2e186e3;
+    margin-left: 5vw;
+}
+
+.textDiv2 {
+    font-size: 9rem;
+    width: 40%;
+    text-align: right;
+    margin-left: 55vw;
+    padding: 7vh;
+    color: #e2e186e3;
+}

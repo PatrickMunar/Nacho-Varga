@@ -124,9 +124,10 @@ controls.enabled = false
 controls.enableDamping = true
 
 // Nacho Triangles
+let nachosGroup = new THREE.Group
 let nachos = []
 let nachoCount = 0
-let totalNachos = 30
+let totalNachos = 15
 const makeNachos = () => {
     const material = new THREE.LineBasicMaterial({
         color: 0xaa0000
@@ -134,7 +135,8 @@ const makeNachos = () => {
     
     const points = [];
 
-    const s = Math.random()*2 + 1
+    // const s = Math.random()*2 + 1
+    const s = 3
 
     points.push( new THREE.Vector3( -0.5 * s, 0, -10 ) );
     points.push( new THREE.Vector3( 0, Math.sin(Math.PI*60/180) * s, -10 ) );
@@ -153,16 +155,17 @@ const makeNachos = () => {
 
     const x = (Math.random() - 0.5) * 30
     const y = (Math.random() - 0.5) * 30 - Math.random()*30
-    const z = (Math.random() - 0.5) * 5
+    const z = -Math.random() * 50
     line.position.set(x, y, z)
 
+    nachosGroup.add(line)
     nachos[nachoCount] = line
     nachoCount++
     if (nachoCount < totalNachos) {
         makeNachos()
     }
 }
-
+scene.add(nachosGroup)
 makeNachos()
 
 // Animations
@@ -459,4 +462,73 @@ const tick = () =>
 }
 
 tick()
+
+// Sets
+gsap.set('.textDiv1', {x: -100})
+gsap.set('.textDiv2', {x: 100})
+
+// Scroll Triggers
+
+gsap.registerPlugin(ScrollTrigger)
+const vhValue = (coef) => {
+    window.innerHeight*(coef/100)
+}
+
+// gsap.to(nachosGroup.rotation , {
+//     scrollTrigger: {
+//         trigger: '.slider',
+//         start: 'top top',
+//         end: vhValue(100),
+//         // pin: true,
+//         scrub: true,
+//         markers: true
+//     },
+//     y: Math.PI*2,
+//     // spreadFactor: 0.1,
+//     // scale: 0.95,
+//     ease: 'none',
+// })
+
+gsap.to(landingMesh.rotation , {
+    scrollTrigger: {
+        trigger: '.slider',
+        start: 'top top',
+        end: vhValue(100),
+        // pin: true,
+        scrub: true,
+    },
+    z: Math.PI*20/180,
+    // spreadFactor: 0.1,
+    // scale: 0.95,
+    ease: 'none',
+})
+
+gsap.to('.textDiv1' , {
+    scrollTrigger: {
+        trigger: '.slider',
+        start: 'top top',
+        end: vhValue(100),
+        // pin: true,
+        scrub: true,
+    },
+    x: 0,
+    // spreadFactor: 0.1,
+    // scale: 0.95,
+    ease: 'none',
+})
+
+gsap.to('.textDiv2' , {
+    scrollTrigger: {
+        trigger: '.slider',
+        start: 'top top',
+        end: vhValue(100),
+        // pin: true,
+        scrub: true,
+    },
+    x: 0,
+    // spreadFactor: 0.1,
+    // scale: 0.95,
+    ease: 'none',
+})
+
 

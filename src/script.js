@@ -318,12 +318,17 @@ scene.add(cameraGroup)
 
 // Mouse
 const mouse = new THREE.Vector2()
+let cursorY = 0
 
 window.addEventListener('mousemove', (event) =>
 {
+    gsap.to('.cursorFollower', {opacity: 1})
     mouse.x = event.clientX / sizes.width * 2 - 1
     mouse.y = - (event.clientY / sizes.height) * 2 + 1
 
+    // Cursor Follower
+    cursorY = event.clientY - 10
+    gsap.to('.cursorFollower', {x: event.clientX - 15, y: event.clientY - 15 + scrollY})
 })
 
 // Raycasting Click
@@ -383,9 +388,11 @@ window.addEventListener('click', () => {
 // Scroll
 const sectionDistance = 15
 
-let scrollY = window.scrollY
+let scrollY = 0
 window.addEventListener('scroll', () => {
+    console.log(cursorY)
     scrollY = window.scrollY
+    gsap.to('.cursorFollower', {y: cursorY + scrollY})
 })
 
 /**
@@ -403,6 +410,8 @@ const tick = () =>
 
     // Update uTime
     material.uniforms.uTime.value = elapsedTime
+    pm2material.uniforms.uTime.value = elapsedTime
+    pm3material.uniforms.uTime.value = elapsedTime
 
     // Camera Parallax
     const parallaxX = mouse.x * 0.05
@@ -433,6 +442,7 @@ const tick = () =>
         if(!landingCurrentIntersect)
         {
             canvas.style.cursor = 'pointer'
+            gsap.to('.cursorFollower', {backgroundColor: 'rgba(219, 0, 0, 0.7)'})
         }
         if (landingCurrentIntersect === null) {
             landingCurrentIntersect = landingIntersects[0]
@@ -442,6 +452,7 @@ const tick = () =>
         if(landingCurrentIntersect)
         {
             canvas.style.cursor = 'default'
+            gsap.to('.cursorFollower', {backgroundColor: 'rgba(255, 255, 255, 0.7)'})
         }
         if (landingCurrentIntersect) {
             landingCurrentIntersect = null

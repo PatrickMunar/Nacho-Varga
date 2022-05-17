@@ -42,6 +42,7 @@ body {
     width: 100vw;
     height: 100vh;
     cursor: default;
+    pointer-events: none;
 }
 
 .sections {
@@ -119,6 +120,7 @@ body {
 .nacho {
     font-size: 22rem;
     color: #e2e186e3;
+    text-shadow: -2px 2px 5px black;
     z-index: 2000;
     cursor: default;
 }
@@ -179,9 +181,24 @@ body {
 
 .textDiv2 {
     font-size: 9rem;
-    width: 40%;
+    width: 45%;
     text-align: right;
-    margin-left: 55vw;
+    margin-left: 50vw;
     padding: 7vh;
     color: #e2e186e3;
+}
+
+/* Cursor Follower */
+.cursorFollower {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000000000;
+    border-radius: 50%;
+    /* background-color: rgba(219, 0, 0, 0.7); */
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    opacity: 0;
 }
